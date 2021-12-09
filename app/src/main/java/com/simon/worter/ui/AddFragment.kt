@@ -8,6 +8,7 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.navigation.findNavController
 import com.simon.worter.R
 
@@ -17,13 +18,14 @@ class AddFragment : Fragment() {
         val word = root.findViewById<EditText>(R.id.input_word)
         val translation = root.findViewById<EditText>(R.id.input_translation)
         val btn = root.findViewById<Button>(R.id.add)
+        val viewModel : MainViewModel by viewModels()
         btn.setOnClickListener {
             val wordText = word.text.toString()
             val translationText = translation.text.toString()
             if(wordText.isBlank() || translationText.isBlank()) {
                 Toast.makeText(context, "Enter word and translation", Toast.LENGTH_SHORT).show()
             }else {
-                //add to database here
+                viewModel.addWord(wordText, translationText)
                 root.findNavController().navigate(R.id.action_addFragment_to_startFragment)
             }
         }
