@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Worter</string>
+    <string name="next">next</string>
+    <string name="practice">practice</string>
+    <string name="add">add word</string>
+    <string name="word">Word:</string>
+    <string name="translation">Translation:</string>
+    <string name="add_word">Add word</string>
+</resources>
