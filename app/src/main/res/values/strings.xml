@@ -6,4 +6,6 @@
     <string name="word">Word:</string>
     <string name="translation">Translation:</string>
     <string name="add_word">Add word</string>
+    <string name="hint2">Dog</string>
+    <string name="hint1">Der Hund</string>
 </resources>
