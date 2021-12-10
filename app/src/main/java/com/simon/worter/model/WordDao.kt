@@ -1,5 +1,6 @@
 package com.simon.worter.model
 
+import androidx.lifecycle.LiveData
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.Query
@@ -8,8 +9,8 @@ import androidx.room.Query
 interface WordDao {
 
     @Query("SELECT * FROM Word ORDER BY RANDOM() LIMIT 1")
-    fun getRandomWord() : Word
+    public fun getRandomWord() : LiveData<Word>
 
     @Insert
-    fun addWord(word : Word)
+    public suspend fun addWord(word : Word)
 }
