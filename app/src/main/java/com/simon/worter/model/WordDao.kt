@@ -13,4 +13,6 @@ interface WordDao {
 
     @Insert
     public suspend fun addWord(word : Word)
+    @Query("SELECT COUNT(*) FROM Word ")
+    public fun getNumberOfWords() : LiveData<Int>
 }

@@ -8,4 +8,5 @@
     <string name="add_word">Add word</string>
     <string name="hint2">Dog</string>
     <string name="hint1">Der Hund</string>
+    <string name="statistics">Statistics</string>
 </resources>

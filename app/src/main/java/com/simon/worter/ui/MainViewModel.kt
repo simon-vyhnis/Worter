@@ -27,4 +27,7 @@ class MainViewModel(context: Application) : AndroidViewModel(context) {
     public fun getRandomWord() : LiveData<Word> {
         return db.wordDao().getRandomWord()
     }
+    public fun getNumberOfWords() : LiveData<Int> {
+        return db.wordDao().getNumberOfWords()
+    }
 }
