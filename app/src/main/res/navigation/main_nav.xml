@@ -14,6 +14,9 @@
         <action
             android:id="@+id/action_startFragment_to_addFragment"
             app:destination="@id/addFragment" />
+        <action
+            android:id="@+id/action_startFragment_to_aboutFragment"
+            app:destination="@id/aboutFragment" />
     </fragment>
     <fragment
         android:id="@+id/addFragment"
@@ -27,4 +30,8 @@
         android:id="@+id/practiceFragment"
         android:name="com.simon.worter.ui.PracticeFragment"
         android:label="PracticeFragment" />
+    <fragment
+        android:id="@+id/aboutFragment"
+        android:name="com.simon.worter.ui.AboutFragment"
+        android:label="AboutFragment" />
 </navigation>

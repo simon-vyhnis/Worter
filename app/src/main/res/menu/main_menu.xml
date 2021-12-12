@@ -3,5 +3,8 @@
     <item
         android:title="@string/statistics"
         android:id="@+id/statistics"/>
+    <item
+        android:title="@string/about_app"
+        android:id="@+id/about"/>
 
 </menu>
