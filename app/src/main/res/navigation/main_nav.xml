@@ -29,9 +29,25 @@
     <fragment
         android:id="@+id/practiceFragment"
         android:name="com.simon.worter.ui.PracticeFragment"
-        android:label="PracticeFragment" />
+        android:label="PracticeFragment">
+        <action
+            android:id="@+id/action_practiceFragment_to_editFragment"
+            app:destination="@id/editFragment" />
+        <action
+            android:id="@+id/action_practiceFragment_to_startFragment"
+            app:destination="@id/startFragment" />
+    </fragment>
     <fragment
         android:id="@+id/aboutFragment"
         android:name="com.simon.worter.ui.AboutFragment"
         android:label="AboutFragment" />
+    <fragment
+        android:id="@+id/editFragment"
+        android:name="com.simon.worter.ui.EditFragment"
+        android:label="EditFragment" >
+        <action
+            android:id="@+id/action_editFragment_to_practiceFragment"
+            app:destination="@id/practiceFragment"
+            app:popUpTo="@id/startFragment"/>
+    </fragment>
 </navigation>

@@ -12,23 +12,34 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import com.simon.worter.R
-import kotlinx.coroutines.runBlocking
 
-class AddFragment : Fragment() {
+class EditFragment : Fragment() {
+
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val root =  inflater.inflate(R.layout.fragment_add, container, false)
-        val word = root.findViewById<EditText>(R.id.input_word)
-        val translation = root.findViewById<EditText>(R.id.input_translation)
-        val btn = root.findViewById<Button>(R.id.add)
         val viewModel = ViewModelProvider(requireActivity()).get(MainViewModel::class.java)
+        val word = viewModel.lastWord
+
+        val wordView = root.findViewById<EditText>(R.id.input_word)
+        wordView.setText(word?.value)
+        println(word?.value)
+        val translation = root.findViewById<EditText>(R.id.input_translation)
+        translation.setText(word?.translation)
+        val btn = root.findViewById<Button>(R.id.add)
+        btn.text = "Update"
+
         btn.setOnClickListener {
-            val wordText = word.text.toString()
-            val translationText = translation.text.toString()
-            if(wordText.isBlank() || translationText.isBlank()) {
+            word?.value = wordView.text.toString()
+            word?.translation = translation.text.toString()
+            if(wordView.text.toString().isBlank() || wordView.text.toString().isBlank()) {
                 Toast.makeText(context, "Enter word and translation", Toast.LENGTH_SHORT).show()
             }else {
-                viewModel.addWord(wordText, translationText)
-                root.findNavController().navigate(R.id.action_addFragment_to_startFragment)
+                word?.let {
+                    viewModel.updateWord(it)
+                }
+                Toast.makeText(context, "Word updated", Toast.LENGTH_LONG).show()
+                root.findNavController().navigate(R.id.action_editFragment_to_practiceFragment)
             }
         }
         return root

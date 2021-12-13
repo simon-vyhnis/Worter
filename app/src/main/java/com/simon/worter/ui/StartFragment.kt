@@ -7,27 +7,29 @@ import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import com.simon.worter.R
 
 class StartFragment : Fragment() {
-    private val viewModel : MainViewModel by viewModels()
+    private lateinit var viewModel: MainViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         setHasOptionsMenu(true)
         super.onCreate(savedInstanceState)
+        viewModel = ViewModelProvider(requireActivity()).get(MainViewModel::class.java)
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val root =  inflater.inflate(R.layout.fragment_start, container, false)
         val buttonPractice = root.findViewById<Button>(R.id.practice)
         buttonPractice.setOnClickListener {
-            it.findNavController().navigate(R.id.action_startFragment_to_practiceFragment)
+            findNavController().navigate(R.id.action_startFragment_to_practiceFragment)
         }
         val buttonAdd = root.findViewById<Button>(R.id.add)
         buttonAdd.setOnClickListener {
-            it.findNavController().navigate(R.id.action_startFragment_to_addFragment)
+            findNavController().navigate(R.id.action_startFragment_to_addFragment)
         }
         return root
     }

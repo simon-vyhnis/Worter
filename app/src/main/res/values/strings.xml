@@ -10,4 +10,6 @@
     <string name="hint1">Der Hund</string>
     <string name="statistics">Statistics</string>
     <string name="about_app">About App</string>
+    <string name="edit">Edit</string>
+    <string name="delete">Delete</string>
 </resources>

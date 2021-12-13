@@ -6,8 +6,8 @@ import androidx.room.PrimaryKey
 
 @Entity
 data class Word (
-    @ColumnInfo(name = "value") val value : String,
-    @ColumnInfo(name = "translation") val translation : String
+    @ColumnInfo(name = "value") var value : String,
+    @ColumnInfo(name = "translation") var translation : String
     ){
     @PrimaryKey(autoGenerate = true) var uid: Int = 0
 }
