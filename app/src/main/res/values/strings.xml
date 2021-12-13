@@ -12,4 +12,6 @@
     <string name="about_app">About App</string>
     <string name="edit">Edit</string>
     <string name="delete">Delete</string>
+    <string name="foreign_to_own">Foreign to own</string>
+    <string name="own_to_foreign">Own to foreign</string>
 </resources>

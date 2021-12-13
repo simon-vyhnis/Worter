@@ -23,9 +23,13 @@ class StartFragment : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val root =  inflater.inflate(R.layout.fragment_start, container, false)
-        val buttonPractice = root.findViewById<Button>(R.id.practice)
-        buttonPractice.setOnClickListener {
-            findNavController().navigate(R.id.action_startFragment_to_practiceFragment)
+        val buttonForeignToOwn = root.findViewById<Button>(R.id.foreign_to_own)
+        val buttonOwnToForeign = root.findViewById<Button>(R.id.own_to_foreign)
+        buttonForeignToOwn.setOnClickListener {
+            findNavController().navigate(R.id.action_startFragment_to_foreignToOwnFragment)
+        }
+        buttonOwnToForeign.setOnClickListener {
+            findNavController().navigate(R.id.action_startFragment_to_ownToForeignFragment)
         }
         val buttonAdd = root.findViewById<Button>(R.id.add)
         buttonAdd.setOnClickListener {

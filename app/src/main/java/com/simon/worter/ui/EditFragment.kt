@@ -39,7 +39,7 @@ class EditFragment : Fragment() {
                     viewModel.updateWord(it)
                 }
                 Toast.makeText(context, "Word updated", Toast.LENGTH_LONG).show()
-                root.findNavController().navigate(R.id.action_editFragment_to_practiceFragment)
+                root.findNavController().navigateUp()
             }
         }
         return root

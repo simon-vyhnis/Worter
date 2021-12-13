@@ -11,9 +11,9 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.simon.worter.R
 
-class PracticeFragment : Fragment() {
-    lateinit var word:TextView
-    private lateinit var check:TextView
+class ForeignToOwnFragment : Fragment() {
+    lateinit var text1:TextView
+    private lateinit var text2:TextView
     private lateinit var btn: Button
     private var statusCheck = false
     private lateinit var viewModel : MainViewModel
@@ -27,15 +27,15 @@ class PracticeFragment : Fragment() {
         val root = inflater.inflate(R.layout.fragment_practice, container, false)
         val viewModel = ViewModelProvider(requireActivity()).get(MainViewModel::class.java)
         this.viewModel = viewModel
-        word = root.findViewById(R.id.word)
-        check = root.findViewById(R.id.check)
+        text1 = root.findViewById(R.id.word)
+        text2 = root.findViewById(R.id.check)
         btn = root.findViewById(R.id.btn)
         btn.setOnClickListener {
             if(statusCheck){
                 loadWord()
                 statusCheck = false
             }else{
-                check.visibility = View.VISIBLE
+                text2.visibility = View.VISIBLE
                 btn.text = "next"
                 statusCheck = true
             }
@@ -45,15 +45,15 @@ class PracticeFragment : Fragment() {
     }
 
     private fun loadWord(){
-        check.visibility = View.INVISIBLE
+        text2.visibility = View.INVISIBLE
         viewModel.getRandomWord().observe(viewLifecycleOwner) {
             it?.let {
                 viewModel.lastWord = it
-                word.text = it.value
-                check.text = it.translation
+                text1.text = it.value
+                text2.text = it.translation
                 btn.text = "check"
             }
-            it?: run{word.text = "You don't have words"}
+            it?: run{text1.text = "You don't have words"}
         }
     }
 
@@ -66,7 +66,7 @@ class PracticeFragment : Fragment() {
             viewModel.lastWord?.let {viewModel.deleteWord(it)}
             Toast.makeText(context, "Word deleted", Toast.LENGTH_LONG).show()
         }else if(item.itemId == R.id.edit){
-            findNavController().navigate(R.id.action_practiceFragment_to_editFragment)
+            findNavController().navigate(R.id.action_foreignToOwnFragment_to_editFragment)
         }
         return super.onOptionsItemSelected(item)
     }
