@@ -33,5 +33,8 @@ class MainViewModel(context: Application) : AndroidViewModel(context) {
     public fun updateWord(word: Word) = viewModelScope.launch{
         db.wordDao().updateWord(word)
     }
+    fun isWordSaved(wordText: String) : LiveData<Boolean> {
+        return db.wordDao().isWordSaved(wordText)
+    }
 
 }

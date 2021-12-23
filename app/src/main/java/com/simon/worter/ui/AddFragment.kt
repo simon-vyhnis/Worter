@@ -1,6 +1,7 @@
 package com.simon.worter.ui
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -27,8 +28,14 @@ class AddFragment : Fragment() {
             if(wordText.isBlank() || translationText.isBlank()) {
                 Toast.makeText(context, "Enter word and translation", Toast.LENGTH_SHORT).show()
             }else {
-                viewModel.addWord(wordText, translationText)
-                root.findNavController().navigate(R.id.action_addFragment_to_startFragment)
+                viewModel.isWordSaved(wordText).observe(viewLifecycleOwner){
+                    if(!it) {
+                        viewModel.addWord(wordText, translationText)
+                        root.findNavController().navigate(R.id.action_addFragment_to_startFragment)
+                    }else{
+                        Toast.makeText(context, "Word already saved", Toast.LENGTH_SHORT).show()
+                    }
+                }
             }
         }
         return root
