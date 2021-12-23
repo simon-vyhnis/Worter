@@ -4,11 +4,8 @@ import android.os.Bundle
 import android.view.*
 import android.widget.Button
 import android.widget.Toast
-import androidx.activity.viewModels
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import com.simon.worter.R
 

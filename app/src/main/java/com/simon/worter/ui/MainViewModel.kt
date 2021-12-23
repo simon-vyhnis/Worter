@@ -16,21 +16,21 @@ class MainViewModel(context: Application) : AndroidViewModel(context) {
         AppDatabase::class.java, "Word"
     ).build()
 
-    public fun addWord(word:String, translation:String) = viewModelScope.launch{
+    fun addWord(word:String, translation:String) = viewModelScope.launch{
         db.wordDao().addWord(Word(word, translation))
     }
 
-    public fun getRandomWord() : LiveData<Word> {
+    fun getRandomWord() : LiveData<Word> {
         return db.wordDao().getRandomWord()
     }
-    public fun getNumberOfWords() : LiveData<Int> {
+    fun getNumberOfWords() : LiveData<Int> {
         return db.wordDao().getNumberOfWords()
     }
 
-    public fun deleteWord(word: Word) = viewModelScope.launch{
+    fun deleteWord(word: Word) = viewModelScope.launch{
         db.wordDao().deleteWord(word)
     }
-    public fun updateWord(word: Word) = viewModelScope.launch{
+    fun updateWord(word: Word) = viewModelScope.launch{
         db.wordDao().updateWord(word)
     }
     fun isWordSaved(wordText: String) : LiveData<Boolean> {

@@ -8,7 +8,6 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import com.simon.worter.R
@@ -27,7 +26,7 @@ class EditFragment : Fragment() {
         val translation = root.findViewById<EditText>(R.id.input_translation)
         translation.setText(word?.translation)
         val btn = root.findViewById<Button>(R.id.add)
-        btn.text = "Update"
+        btn.text = getString(R.string.update)
 
         btn.setOnClickListener {
             word?.value = wordView.text.toString()

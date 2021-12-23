@@ -11,7 +11,7 @@ import androidx.navigation.fragment.findNavController
 import com.simon.worter.R
 
 class OwnToForeignFragment : Fragment() {
-    lateinit var text1:TextView
+    private lateinit var text1:TextView
     private lateinit var text2:TextView
     private lateinit var btn: Button
     private var statusCheck = false
@@ -35,7 +35,7 @@ class OwnToForeignFragment : Fragment() {
                 statusCheck = false
             }else{
                 text2.visibility = View.VISIBLE
-                btn.text = "next"
+                btn.text = getString(R.string.next)
                 statusCheck = true
             }
         }
@@ -50,9 +50,9 @@ class OwnToForeignFragment : Fragment() {
                 viewModel.lastWord = it
                 text1.text = it.translation
                 text2.text = it.value
-                btn.text = "check"
+                btn.text = getString(R.string.check)
             }
-            it?: run{text1.text = "You don't have words"}
+            it?: run{text1.text = getString(R.string.no_words_message)}
         }
     }
 

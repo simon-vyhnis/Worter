@@ -6,13 +6,12 @@ import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.simon.worter.R
 
 class ForeignToOwnFragment : Fragment() {
-    lateinit var text1:TextView
+    private lateinit var text1:TextView
     private lateinit var text2:TextView
     private lateinit var btn: Button
     private var statusCheck = false
@@ -36,7 +35,7 @@ class ForeignToOwnFragment : Fragment() {
                 statusCheck = false
             }else{
                 text2.visibility = View.VISIBLE
-                btn.text = "next"
+                btn.text = getString(R.string.next)
                 statusCheck = true
             }
         }
@@ -51,9 +50,9 @@ class ForeignToOwnFragment : Fragment() {
                 viewModel.lastWord = it
                 text1.text = it.value
                 text2.text = it.translation
-                btn.text = "check"
+                btn.text = getString(R.string.check)
             }
-            it?: run{text1.text = "You don't have words"}
+            it?: run{text1.text = getString(R.string.no_words_message)}
         }
     }
 
